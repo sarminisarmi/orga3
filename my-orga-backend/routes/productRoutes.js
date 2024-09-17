@@ -1,11 +1,11 @@
+
+
 const express = require('express');
-const { createProduct, getProducts } = require('../controllers/productController');
-const auth = require('../middleware/auth');
-
 const router = express.Router();
+const productController = require('../controllers/productController');
 
-router.post('/', auth, createProduct);
-router.get('/', getProducts);
+// Example route definitions
+router.post('/add', productController.addProduct); // Ensure addProduct is a function
+router.get('/list', productController.getProducts); // Ensure getProducts is a function
 
 module.exports = router;
-

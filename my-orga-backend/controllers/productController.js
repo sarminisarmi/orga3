@@ -1,20 +1,15 @@
 const Product = require('../models/Product');
 
-exports.createProduct = async (req, res) => {
-  try {
-    const product = new Product(req.body);
-    await product.save();
-    res.status(201).json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+
+console.log('Product Controller Loaded');
+
+// Define and export functions
+exports.addProduct = (req, res) => {
+  console.log('Add Product Function Called');
+  res.send('Product added');
 };
 
-exports.getProducts = async (req, res) => {
-  try {
-    const products = await Product.find().populate('company');
-    res.json(products);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+exports.getProducts = (req, res) => {
+  console.log('Get Products Function Called');
+  res.send('List of products');
 };
