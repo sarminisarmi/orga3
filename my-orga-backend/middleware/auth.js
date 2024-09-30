@@ -1,6 +1,6 @@
  
 const jwt = require('jsonwebtoken');
-
+const { authenticateToken } = require('../middleware/authenticateJWT'); 
 // Middleware to authenticate token
 const authenticateToken = (req, res, next) => {
   const token = req.header('Authorization');
@@ -16,12 +16,16 @@ const authenticateToken = (req, res, next) => {
 };
 
 // Middleware to check if the user is an admin
+// Middleware to check if user is admin
 const isAdmin = (req, res, next) => {
-  if (req.user && req.user.role === 'Admin') {
-    next();
+  if (req.user && req.user.role === 'admin') {
+    next(); // If the user is admin, proceed
   } else {
-    return res.status(403).json({ message: 'Access denied. Admins only.' });
+    res.status(403).json({ message: 'Access denied. Admins only.' });
   }
 };
+
+
+
 
 module.exports = { authenticateToken, isAdmin };

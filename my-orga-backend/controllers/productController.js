@@ -1,7 +1,9 @@
 const Product = require('../models/Product');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 
-console.log('Product Controller Loaded');
+
 
 // Define and export functions
 exports.addProduct = (req, res) => {
